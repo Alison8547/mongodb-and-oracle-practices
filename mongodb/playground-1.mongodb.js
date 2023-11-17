@@ -115,3 +115,9 @@ use('escola');
 db.getCollection('alunos').replaceOne({nome: "Eren"},
    {idade: 16}
 )
+
+use('escola');
+db.getCollection('alunos').deleteOne({nome: "Chris Silva"})
+
+use('escola');
+db.getCollection('alunos').deleteMany({})
