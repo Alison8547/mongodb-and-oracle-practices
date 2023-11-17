@@ -96,3 +96,22 @@ db.getCollection('alunos').find({ idade: {$not: {$eq: 23}}})
 use('escola');
 db.getCollection('alunos').find({}).sort({"nome":-1})
 
+use('escola');
+db.getCollection('alunos').updateOne({nome: "Diana"},
+{
+    $set: {nome: "Eduarda"}
+}
+)
+
+use('escola');
+db.getCollection('alunos').updateMany({nome: "Chris Silva"},
+{
+    $set:{ativo: true}
+}
+)
+
+// replaceOne substitui tudo
+use('escola');
+db.getCollection('alunos').replaceOne({nome: "Eren"},
+   {idade: 16}
+)
