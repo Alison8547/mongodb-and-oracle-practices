@@ -87,3 +87,12 @@ db.getCollection('alunos').find({ $and: [
 // $eq: = equal
 use('escola');
 db.getCollection('alunos').find({ idade: { $eq: 25}})
+
+use('escola');
+db.getCollection('alunos').find({ idade: {$not: {$eq: 23}}})
+
+// Order Ascendente (A-Z)  1
+// Order Descendente (Z-A) -1
+use('escola');
+db.getCollection('alunos').find({}).sort({"nome":-1})
+
