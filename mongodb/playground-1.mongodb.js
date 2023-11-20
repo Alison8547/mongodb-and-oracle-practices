@@ -121,3 +121,27 @@ db.getCollection('alunos').deleteOne({nome: "Chris Silva"})
 
 use('escola');
 db.getCollection('alunos').deleteMany({})
+
+use('escola');
+db.getCollection('alunos').find({idade: {$lt: 22}})
+
+use('escola');
+db.getCollection('alunos').find({ $and: [
+ { 
+        idade: {$gte: 16}
+ },
+{
+        idade: {$lte: 23}
+}
+]})
+// in tudo que de nomes que contem no array ele vai procurar..
+use('escola');
+db.getCollection('alunos').find({nome: {$in:["Eduarda","Diana"]}})
+
+// status da query
+use('escola');
+db.getCollection('alunos').find({nome: "Eduarda"}).explain("executionStats")
+
+// criar um index no nome. sendo 1 crecente e 0 descrecente
+use('escola');
+db.getCollection('alunos').createIndex({name: 1})
