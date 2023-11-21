@@ -145,3 +145,17 @@ db.getCollection('alunos').find({nome: "Eduarda"}).explain("executionStats")
 // criar um index no nome. sendo 1 crecente e 0 descrecente
 use('escola');
 db.getCollection('alunos').createIndex({name: 1})
+
+// find por array
+use('escola');
+db.getCollection('students').find({hobbies: ["Jogar bola","Assistir"]})
+
+use('escola');
+db.getCollection('students').find({"hobbies.1": "Assistir"})
+
+use('escola');
+db.getCollection('students').find({"age" : 20},{name:1,age:1})
+
+// find por school.name e excluindo o gender. E limit de 2 resultados.
+use('escola');
+db.getCollection('students').find({"school.name" : "Alto dos Guararapes"},{gender:0}).limit(2)
