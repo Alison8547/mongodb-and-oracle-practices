@@ -159,3 +159,6 @@ db.getCollection('students').find({"age" : 20},{name:1,age:1})
 // find por school.name e excluindo o gender. E limit de 2 resultados.
 use('escola');
 db.getCollection('students').find({"school.name" : "Alto dos Guararapes"},{gender:0}).limit(2)
+
+use('escola');
+db.getCollection('students').find({"school.name" :  {$regex: 'redentor', $options: "i" }})
