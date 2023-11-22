@@ -162,3 +162,9 @@ db.getCollection('students').find({"school.name" : "Alto dos Guararapes"},{gende
 
 use('escola');
 db.getCollection('students').find({"school.name" :  {$regex: 'redentor', $options: "i" }})
+
+use('escola');
+db.getCollection('students').find({ created: { $lte: ISODate("2023-11-21T02:18:46.560Z")}})
+
+use('escola');
+db.getCollection('students').find({created:{$gte:ISODate("2023-11-21"),$lte:ISODate("2023-11-23")}})
