@@ -168,3 +168,14 @@ db.getCollection('students').find({ created: { $lte: ISODate("2023-11-21T02:18:4
 
 use('escola');
 db.getCollection('students').find({created:{$gte:ISODate("2023-11-21"),$lte:ISODate("2023-11-23")}})
+
+use('escola');
+db.getCollection('students').find({}).forEach(function(obs){print("Name: "+ obs.name)})
+
+use('escola');
+db.getCollection('students').find({}).forEach(function(documents) 
+ { 
+    var emails = documents.email;
+    print("Email: " + emails)
+ }
+)
