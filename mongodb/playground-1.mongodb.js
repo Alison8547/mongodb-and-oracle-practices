@@ -210,3 +210,7 @@ db.getCollection('students').find({school: {$exists: false}})
 // $type: vai retornar os documentos cujo o email é tipo string
 use('escola');
 db.getCollection('students').find({email: {$type: "string"}})
+
+// $all: retorna os documentos cujo o valor do array contém os elementos passados
+use('escola');
+db.getCollection('students').find({hobbies:{$all: ["Correr na praia"]}})
