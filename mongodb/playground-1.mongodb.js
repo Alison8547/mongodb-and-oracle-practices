@@ -179,3 +179,26 @@ db.getCollection('students').find({}).forEach(function(documents)
     print("Email: " + emails)
  }
 )
+
+use('escola');
+db.getCollection('students').find({ $and: [{"name" : "Alison"},{"age" : 20}]})
+
+use('escola');
+db.getCollection('students').find({ $or: [{"name": "Marta"},{"age": 24}]})
+
+use('escola');
+db.getCollection('students').find({ $and: [ { age: { $gte: 25}},{ age: {$lte: 30}}]})
+
+use('escola');
+db.getCollection('students').find({age: {$eq: 25}})
+
+use('escola');
+db.getCollection('students').find({ age: {$in: [25,26]}})
+
+// $nin: não tras os documentos cujo tem esses valores
+use('escola');
+db.getCollection('students').find({ age: {$nin:[25,26]}})
+
+// $ne não tras os documentos que seja igual o valor colocado
+use('escola');
+db.getCollection('students').find({age: {$ne: 25}})
