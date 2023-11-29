@@ -202,3 +202,11 @@ db.getCollection('students').find({ age: {$nin:[25,26]}})
 // $ne não tras os documentos que seja igual o valor colocado
 use('escola');
 db.getCollection('students').find({age: {$ne: 25}})
+
+// $exists: false -> vai retornar o documento que não existe o campo school
+use('escola');
+db.getCollection('students').find({school: {$exists: false}})
+
+// $type: vai retornar os documentos cujo o email é tipo string
+use('escola');
+db.getCollection('students').find({email: {$type: "string"}})
