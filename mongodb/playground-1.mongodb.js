@@ -214,3 +214,15 @@ db.getCollection('students').find({email: {$type: "string"}})
 // $all: retorna os documentos cujo o valor do array contém os elementos passados
 use('escola');
 db.getCollection('students').find({hobbies:{$all: ["Correr na praia"]}})
+
+var consultas = [
+    "São luís",
+    "Amor divino"
+]
+use('escola');
+db.getCollection('students').find({
+    "school.name": {$in: consultas},
+    "gender": {$ne: "FEMALE"}
+}).forEach(x => {
+    print(`{"Nome": `+`"`+x.name+`"},`)
+})
