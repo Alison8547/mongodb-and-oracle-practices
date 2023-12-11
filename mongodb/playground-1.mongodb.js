@@ -222,7 +222,24 @@ var consultas = [
 use('escola');
 db.getCollection('students').find({
     "school.name": {$in: consultas},
-    "gender": {$ne: "FEMALE"}
+    "gender": {$ne: "FEMALE"},
+    "name": {$ne: "Alison"}
 }).forEach(x => {
     print(`{"Nome": `+`"`+x.name+`"},`)
 })
+
+var ages = [
+    20,
+    14,
+    26
+]
+use('escola');
+db.getCollection('students').find({
+    "age": {$in: ages},
+    "name": {$ne: "Alison"}
+}).forEach( x => {
+    print(`{"name": `+`"`+x.name+`"},`)
+})
+
+use('escola');
+db.getCollection('students').find({}).pretty().limit(2)
