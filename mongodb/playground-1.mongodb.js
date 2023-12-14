@@ -243,3 +243,38 @@ db.getCollection('students').find({
 
 use('escola');
 db.getCollection('students').find({}).pretty().limit(2)
+
+
+use('escola');
+db.getCollection('students').find({
+    "gender": "MALE",
+    "created": {$gt: new Date("2023-12-12T23:41:45.385Z")}
+})
+
+use('escola');
+db.getCollection('students').find({
+    "gender": "MALE",
+    "created": {$gt: new Date("2023-12-12")}
+}).forEach(x => {
+    print(`{"name": `+`"`+x.name+`"},`)
+})
+
+use('escola');
+db.getCollection('students').find({
+    "gender": "MALE",
+    "created": {$gt: new Date("2023-12-12")}
+}).forEach(x => {
+    print(`"`+x._id+`"`+",")
+})
+
+var ids = [
+    "657a4139ee5ad13e85c3029c",
+    "657a418bee5ad13e85c3029d"
+] 
+var ids_map = ids.map(function(id) {
+    return ObjectId(id)
+})
+use('escola');
+db.getCollection('students').find({"_id": {$in: ids_map}})
+
+
