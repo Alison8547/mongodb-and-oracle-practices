@@ -277,4 +277,12 @@ var ids_map = ids.map(function(id) {
 use('escola');
 db.getCollection('students').find({"_id": {$in: ids_map}})
 
+use('escola');
+db.getCollection('students').deleteOne({"_id": ObjectId("657a5f86b88d1c2c04be7601")})
 
+use('escola');
+db.getCollection('students').find({
+    "name": "Carlos"
+}).forEach(x => {
+    print(x.hobbies[1]+", "+x.hobbies[2])
+})
